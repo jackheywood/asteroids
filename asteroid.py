@@ -1,5 +1,6 @@
 import pygame
 from circleshape import CircleShape
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, DESPAWN_MARGIN
 
 
 class Asteroid(CircleShape):
@@ -11,3 +12,13 @@ class Asteroid(CircleShape):
 
     def update(self, dt):
         self.position += self.velocity * dt
+        if self.is_offscreen():
+            self.kill()
+
+    def is_offscreen(self):
+        return (
+                self.position.x > SCREEN_WIDTH + self.radius + DESPAWN_MARGIN
+                or self.position.x < -self.radius - DESPAWN_MARGIN
+                or self.position.y > SCREEN_HEIGHT + self.radius + DESPAWN_MARGIN
+                or self.position.y < -self.radius - DESPAWN_MARGIN
+        )
