@@ -29,9 +29,6 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     asteroid_field = AsteroidField()
 
-    shots_count = 0
-    asteroids_count = 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -52,16 +49,6 @@ def main():
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000
-
-        new_asteroids_count = len(asteroids.sprites())
-        if new_asteroids_count != asteroids_count:
-            asteroids_count = new_asteroids_count
-            print(f"Asteroids: {asteroids_count}")
-
-        new_shots_count = len(shots.sprites())
-        if new_shots_count != shots_count:
-            shots_count = new_shots_count
-            print(f"Shots: {shots_count}")
 
 
 def print_startup():
