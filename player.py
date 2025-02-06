@@ -7,7 +7,7 @@ from shot import Shot
 class Player(CircleShape):
 
     def __init__(self, x, y):
-        super().__init__(x, y, PLAYER_RADIUS)
+        super().__init__(x, y, PLAYER_RADIUS, "green")
         self.rotation = 180
         self.cooldown_timer = 0
 
